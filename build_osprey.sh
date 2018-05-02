@@ -13,7 +13,7 @@ export KERNEL_TOOLCHAIN_PREFIX=arm-eabi-
 source build/envsetup.sh
 
 # microG build
-export RELEASE_TYPE=UNOFFICIAL-microG
+export RELEASE_TYPE=UNOFFICIAL-mG-oms
 
 # Anonymize Kernel build
 export KBUILD_BUILD_USER=android

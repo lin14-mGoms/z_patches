@@ -15,7 +15,7 @@ prebuilts/misc/linux-x86/ccache/ccache -M 32G
 # export WITH_SU=true
 
 # microG build
-export RELEASE_TYPE=UNOFFICIAL-microG
+export RELEASE_TYPE=UNOFFICIAL-mG-oms
 
 # Normalize build metadata
 export KBUILD_BUILD_USER=android
