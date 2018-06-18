@@ -11,8 +11,8 @@ export USE_CCACHE=1
 #export CCACHE_DIR=~/android/.ccache
 prebuilts/misc/linux-x86/ccache/ccache -M 32G
 
-# build with root baked in
-export WITH_SU=true
+# OMS default build
+export RELEASE_TYPE=UNOFFICIAL-oms
 
 # Normalize build metadata
 export KBUILD_BUILD_USER=android

@@ -9,11 +9,11 @@ prebuilts/misc/linux-x86/ccache/ccache -M 32G
 export KERNEL_TOOLCHAIN=$PWD/prebuilts/gcc/linux-x86/arm/linaro-arm-eabi-6.4/bin
 export KERNEL_TOOLCHAIN_PREFIX=arm-eabi-
 
-# with root
-export WITH_SU=true
-
 # Initiate env
 source build/envsetup.sh
+
+# OMS default build
+export RELEASE_TYPE=UNOFFICIAL-oms
 
 # Anonymize Kernel build
 export KBUILD_BUILD_USER=android
