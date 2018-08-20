@@ -6,8 +6,8 @@ export USE_CCACHE=1
 prebuilts/misc/linux-x86/ccache/ccache -M 32G
 
 # Adjust TOOLCHAIN path 
-export KERNEL_TOOLCHAIN=$PWD/prebuilts/gcc/linux-x86/arm/linaro-arm-eabi-6.4/bin
-export KERNEL_TOOLCHAIN_PREFIX=arm-eabi-
+export KERNEL_TOOLCHAIN=~/android/build-tools-gcc/arm-linux-gnueabi/bin
+export KERNEL_TOOLCHAIN_PREFIX=arm-linux-gnueabi-
 
 # Initiate env
 source build/envsetup.sh
