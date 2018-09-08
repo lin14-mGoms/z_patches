@@ -3,7 +3,7 @@
 # CCache
 export USE_CCACHE=1
 #export CCACHE_DIR=~/.ccache14
-prebuilts/misc/linux-x86/ccache/ccache -M 32G
+prebuilts/misc/linux-x86/ccache/ccache -M 40G
 
 # Adjust TOOLCHAIN path 
 export KERNEL_TOOLCHAIN=~/android/build-tools-gcc/arm-linux-gnueabi/bin

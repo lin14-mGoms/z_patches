@@ -9,7 +9,7 @@ source build/envsetup.sh
 # directory (default is ~/.ccache)
 export USE_CCACHE=1
 #export CCACHE_DIR=~/android/.ccache
-prebuilts/misc/linux-x86/ccache/ccache -M 32G
+prebuilts/misc/linux-x86/ccache/ccache -M 40G
 
 # un-comment below line, if you want to build with root baked in
 # export WITH_SU=true
