@@ -6,8 +6,8 @@ case "$1" in
     ;;
   sign) TESTKEY=false
     ;;
-  *) echo "usage: build_gts210ltexx test|sign"
-     echo "----------------------------------"
+  *) echo "usage: build_amami test|sign"
+     echo "-------------------------------"
      echo "test - build with testkeys (insecure, but compatible)"
      echo "sign - create a signed build"
      exit
@@ -25,8 +25,8 @@ export USE_CCACHE=1
 #export CCACHE_DIR=~/android/.ccache
 prebuilts/misc/linux-x86/ccache/ccache -M 40G
 
-# build with root baked in
-export WITH_SU=true
+# un-comment below line, if you want to build with root baked in
+# export WITH_SU=true
 
 # Normalize build metadata
 export KBUILD_BUILD_USER=android
@@ -44,7 +44,5 @@ if [ "$TESTKEY" = false ] ; then
     done
   done
 fi
-
-# start build
-brunch gts210ltexx
+brunch amami
 
