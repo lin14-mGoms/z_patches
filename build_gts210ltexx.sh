@@ -37,15 +37,13 @@ if [ "$TESTKEY" = false ] ; then
   export RELEASE_TYPE=UNOFFICIAL-microG-signed
 
   # We need symlinks to fake the existence of a testkey 
-  # for the selinux build process
-  if [ ! -e $OWN_KEYS_DIR/testkey.pk8 ] ; then
-    ln -s $OWN_KEYS_DIR/releasekey.pk8 $OWN_KEYS_DIR/testkey.pk8
-    echo "Symlink testkey.pk8 created"
-  fi
-  if [ ! -e $OWN_KEYS_DIR/testkey.x509.pem ] ; then
-    ln -s $OWN_KEYS_DIR/releasekey.x509.pem $OWN_KEYS_DIR/testkey.x509.pem
-    echo "Symlink testkey.x509.pem created"
-  fi
+  # for the selinux build process and cyngn-priv-app for
+  # some old CM apps
+  for c in cyngn{-priv,}-app testkey; do
+    for e in pk8 x509.pem; do
+      ln -s releasekey.$e "$OWN_KEYS_DIR/$c.$e" 2> /dev/null
+    done
+  done
 else
   export RELEASE_TYPE=UNOFFICIAL-microG
 fi
