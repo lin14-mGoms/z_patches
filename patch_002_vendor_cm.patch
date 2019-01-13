@@ -1,7 +1,7 @@
-From 36ad886e5638fc75f96fc812e1c0c84372cb0eb2 Mon Sep 17 00:00:00 2001
+From 90dd0344444ce550dd9f94b303a8c9285e50a85d Mon Sep 17 00:00:00 2001
 From: MSe1969 <mse1969@posteo.de>
 Date: Sat, 29 Dec 2018 12:41:21 +0100
-Subject: [PATCH] Different sign method in build script
+Subject: [PATCH] Different sign method in build script & custom buld name
 
 The original method, as documented by Google / LineageOS, sometimes causes
 errors when executing the 'ota_from_target_files' python script.
@@ -11,13 +11,16 @@ of vendor/lineage and setting a symlink testkey.* => releasekey.* in the
 certs directory to allow selinux to build has been chosen, similar to
 the docker image in github.com/lineageos4microg.
 
+Further, remove the 'Reset' of the build name to allow a custom build name
+containing the word 'signed' in its name.
+
 Change-Id: I4b8b26ef3f6d54f7d4ee1c570c1737779b6b8884
 ---
- config/common.mk | 7 +++++++
- 1 file changed, 7 insertions(+)
+ config/common.mk | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/config/common.mk b/config/common.mk
-index 55d1dac8..51146306 100644
+index 55d1dac8..fdccf7da 100644
 --- a/config/common.mk
 +++ b/config/common.mk
 @@ -1,5 +1,12 @@
@@ -33,6 +36,18 @@ index 55d1dac8..51146306 100644
  PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
  
  ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
+@@ -249,11 +256,6 @@ ifndef CM_BUILDTYPE
+     endif
+ endif
+ 
+-# Filter out random types, so it'll reset to UNOFFICIAL
+-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(CM_BUILDTYPE)),)
+-    CM_BUILDTYPE :=
+-endif
+-
+ ifdef CM_BUILDTYPE
+     ifneq ($(CM_BUILDTYPE), SNAPSHOT)
+         ifdef CM_EXTRAVERSION
 -- 
 2.11.0
 
