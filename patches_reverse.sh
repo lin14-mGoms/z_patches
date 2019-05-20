@@ -19,6 +19,7 @@ TOPDIR=$PWD
 
 
 clear_set build
+clear_set device/qcom/sepolicy
 
 cd $THISDIR
 
