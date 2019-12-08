@@ -15,6 +15,10 @@ echo "Patching $PWD (QCOM sepolicy)"
 patch -p1 < $THISDIR/patch_002_device-qcom-sepolicy.patch
 cd $TOPDIR
 
+cd external/p7zip
+echo "Patching $PWD (p7zip hugefile support)"
+patch -p1 < $THISDIR/patch_004_p7zip.patch
+cd $TOPDIR
 
 cd $THISDIR
 
