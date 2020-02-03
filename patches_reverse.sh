@@ -20,7 +20,6 @@ TOPDIR=$PWD
 
 clear_set build
 clear_set external/p7zip
-clear_set frameworks/base
 
 cd $THISDIR
 
