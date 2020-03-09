@@ -20,7 +20,6 @@ TOPDIR=$PWD
 
 clear_set build
 clear_set device/qcom/sepolicy
-clear_set external/p7zip
 
 cd $THISDIR
 
