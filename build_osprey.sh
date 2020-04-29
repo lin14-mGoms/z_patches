@@ -28,10 +28,6 @@ prebuilts/misc/linux-x86/ccache/ccache -M 40G
 # un-comment below line, if you want to build with root baked in
 # export WITH_SU=true
 
-# Adjust TOOLCHAIN path 
-export KERNEL_TOOLCHAIN=$PWD/prebuilts/gcc/linux-x86/arm/arm-linux-gnueabi/bin
-export KERNEL_TOOLCHAIN_PREFIX=arm-linux-gnueabi-
-
 # Normalize build metadata
 export KBUILD_BUILD_USER=android
 export KBUILD_BUILD_HOST=localhost
