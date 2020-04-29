@@ -5,17 +5,16 @@ export USE_CCACHE=1
 #export CCACHE_DIR=~/.ccache14
 prebuilts/misc/linux-x86/ccache/ccache -M 40G
 
-# Adjust TOOLCHAIN path 
-export KERNEL_TOOLCHAIN=$PWD/prebuilts/gcc/linux-x86/arm/arm-linux-gnueabi/bin
-export KERNEL_TOOLCHAIN_PREFIX=arm-linux-gnueabi-
-
 # Initiate env
 source build/envsetup.sh
 
 # OMS default build
 export RELEASE_TYPE=UNOFFICIAL-oms
 
-# Anonymize Kernel build
+# un-comment below line, if you want to build with root baked in
+# export WITH_SU=true
+
+# Normalize build metadata
 export KBUILD_BUILD_USER=android
 export KBUILD_BUILD_HOST=localhost
 
