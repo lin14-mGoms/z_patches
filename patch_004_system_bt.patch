@@ -1,0 +1,55 @@
+From 6a05a5dc907a9f57be98f1b3ac3140b2b0382403 Mon Sep 17 00:00:00 2001
+From: weichinweng <weichinweng@google.com>
+Date: Tue, 28 Jul 2020 16:56:33 +0800
+Subject: [PATCH] Fix possible OOB when receive gatt read type response data
+
+Bug: 158833854
+Bug: 158778659
+Test: manual
+Tag: #security
+
+[syphyr: Backport to 14.1:
+- replace log function with GATT_TRACE_ERROR]
+Signed-off-by: L.W.Reek <syphyr@gmail.com>
+
+Change-Id: I1bd8713eecebc2bc3d919402b035987e06a2d4d3
+(cherry picked from commit 0eb7a763dff47d349b5cfc5821116ece5a46ffa3)
+---
+ stack/gatt/gatt_cl.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/stack/gatt/gatt_cl.c b/stack/gatt/gatt_cl.c
+index 6a50d5e2..04a027fe 100644
+--- a/stack/gatt/gatt_cl.c
++++ b/stack/gatt/gatt_cl.c
+@@ -845,6 +845,13 @@ void gatt_process_read_by_type_rsp (tGATT_TCB *p_tcb, tGATT_CLCB *p_clcb, UINT8
+         /* discover included service */
+         else if (p_clcb->operation == GATTC_OPTYPE_DISCOVERY && p_clcb->op_subtype == GATT_DISC_INC_SRVC)
+         {
++            if (value_len < 4)
++            {
++                android_errorWriteLog(0x534e4554, "158833854");
++                GATT_TRACE_ERROR("Illegal Response length, must be at least 4.");
++                gatt_end_operation(p_clcb, GATT_INVALID_PDU, NULL);
++                return;
++            }
+             STREAM_TO_UINT16(record_value.incl_service.s_handle, p);
+             STREAM_TO_UINT16(record_value.incl_service.e_handle, p);
+ 
+@@ -903,6 +910,13 @@ void gatt_process_read_by_type_rsp (tGATT_TCB *p_tcb, tGATT_CLCB *p_clcb, UINT8
+         }
+         else /* discover characterisitic */
+         {
++            if (value_len < 3)
++            {
++               android_errorWriteLog(0x534e4554, "158778659");
++               GATT_TRACE_ERROR("Illegal Response length, must be at least 3.");
++               gatt_end_operation(p_clcb, GATT_INVALID_PDU, NULL);
++               return;
++            }
+             STREAM_TO_UINT8 (record_value.dclr_value.char_prop, p);
+             STREAM_TO_UINT16(record_value.dclr_value.val_handle, p);
+             if (!GATT_HANDLE_IS_VALID(record_value.dclr_value.val_handle))
+-- 
+2.11.0
+
