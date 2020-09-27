@@ -18,6 +18,11 @@ cd core/res/res/values
 rm *orig
 cd $TOPDIR
 
+cd system/bt
+echo "Patching $PWD (addl. CVE)"
+patch -p1 < $THISDIR/patch_004_system_bt.patch
+cd $TOPDIR
+
 cd vendor/cm
 echo "Patching $PWD (signed builds)"
 patch -p1 < $THISDIR/patch_002_vendor_cm.patch
