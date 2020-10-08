@@ -15,10 +15,6 @@ echo "Patching $PWD (QCOM sepolicy)"
 patch -p1 < $THISDIR/patch_002_device-qcom-sepolicy.patch
 cd $TOPDIR
 
-cd system/bt
-echo "Patching $PWD (addl. CVE)"
-patch -p1 < $THISDIR/patch_004_system_bt.patch
-cd $TOPDIR
 
 cd $THISDIR
 
