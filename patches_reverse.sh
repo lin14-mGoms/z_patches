@@ -20,7 +20,6 @@ TOPDIR=$PWD
 
 clear_set build
 clear_set frameworks/base
-clear_set system/bt
 clear_set vendor/cm
 
 cd $THISDIR
