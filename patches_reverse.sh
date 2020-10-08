@@ -19,7 +19,6 @@ TOPDIR=$PWD
 
 
 clear_set build
-clear_set system/bt
 
 cd $THISDIR
 
