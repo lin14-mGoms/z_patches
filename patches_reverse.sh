@@ -20,6 +20,7 @@ TOPDIR=$PWD
 
 clear_set build
 clear_set device/qcom/sepolicy
+clear_set packages/apps/Email
 
 cd $THISDIR
 

@@ -15,6 +15,10 @@ echo "Patching $PWD (QCOM sepolicy)"
 patch -p1 < $THISDIR/patch_002_device-qcom-sepolicy.patch
 cd $TOPDIR
 
+cd packages/apps/Email
+echo "Patching $PWD (E-Mail Widget)"
+patch -p1 < $THISDIR/patch_010_Email.patch
+cd $TOPDIR
 
 cd $THISDIR
 
