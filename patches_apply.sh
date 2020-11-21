@@ -18,11 +18,6 @@ cd core/res/res/values
 rm *orig
 cd $TOPDIR
 
-cd packages/apps/Email
-echo "Patching $PWD (E-Mail Widget)"
-patch -p1 < $THISDIR/patch_010_Email.patch
-cd $TOPDIR
-
 cd vendor/cm
 echo "Patching $PWD (signed builds)"
 patch -p1 < $THISDIR/patch_002_vendor_cm.patch
